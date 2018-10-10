@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html>
-<body>
+	<body>
+		<h1 id="headline"></h1>
+		<script>
+			window.onload = setHeadline()
 
-<h1 id="headline"></h1>
-
-<script>
-	window.onload = setHeadline()
-
-	function setHeadline() {
-		document.getElementById("headline").innerHTML = generateHeadline()
-	}
-	
-	function generateHeadline() {
-		return  randWord([
+			function setHeadline() {
+				document.getElementById("headline").innerHTML = generateHeadline()
+			}
+			
+			function generateHeadline() {
+				let entities = [
 					"Government of",
 					"Startup from",
 					"Royal Bank of",
@@ -23,8 +21,9 @@
 					"Financial authority of",
 					"H.E. the King of",
 					"Investment bank from"
-				]) +
-				randWord([
+				]
+
+				let locations = [
 					"Hong Kong",
 					"Botswana",
 					"Malta",
@@ -35,8 +34,9 @@
 					"Uruguay",
 					"Tajikistan",
 					"Palau"
-				]) +
-				randWord([
+				]
+
+				let actions = [
 					"approves",
 					"regulates",
 					"introduces",
@@ -47,49 +47,57 @@
 					"founded",
 					"joining",
 					"backing"
-				]) +
-				randWord([
-					"latest",
-					"world's first",
-					"state-of-the-art",
-					"multipurpose",
-					"proprietary",
-					"industrialized",
-					"real-time",
-					"revolutionary",
-					"multiplatform",
-					"real-estate"
-				]) +
-				randWord([
-					"gaming-backed",
-					"decentralized",
-					"transparent",
-					"ERC-721",
-					"SaaS",
-					"IoT-focused",
-					"AI-based",
-					"ERC-20",
-					"flat-backed",
-					"quantum reistant"
-				]) +
-				randWord([
-					"token exchange",
-					"dApp platform",
-					"hyperledger",
-					"sidechain",
-					"ETH hard fork",
-					"cryptoasset",
-					"pre-ICO bonus",
-					"23% airdrop",
-					"prediction market",
-					"asset-backed loans"
-				]);
-	}
-	
-	function randWord(array) {
-		return array[Math.floor(Math.random() * array.length)] + " "
-	}
-</script>
+				]
 
-</body>
+
+
+				var headline = randWord(entities) + randWord
+				return randWord(entities) +
+						randWord(locations) +
+						randWord([
+							
+						]) +
+						randWord([
+							"latest",
+							"world's first",
+							"state-of-the-art",
+							"multipurpose",
+							"proprietary",
+							"industrialized",
+							"real-time",
+							"revolutionary",
+							"multiplatform",
+							"real-estate"
+						]) +
+						randWord([
+							"gaming-backed",
+							"decentralized",
+							"transparent",
+							"ERC-721",
+							"SaaS",
+							"IoT-focused",
+							"AI-based",
+							"ERC-20",
+							"flat-backed",
+							"quantum reistant"
+						]) +
+						randWord([
+							"token exchange",
+							"dApp platform",
+							"hyperledger",
+							"sidechain",
+							"ETH hard fork",
+							"cryptoasset",
+							"pre-ICO bonus",
+							"23% airdrop",
+							"prediction market",
+							"asset-backed loans"
+						]);
+			}
+			
+			function randWord(array) {
+				return array[Math.floor(Math.random() * array.length)] + " "
+			}
+		</script>
+	</body>
 </html>
