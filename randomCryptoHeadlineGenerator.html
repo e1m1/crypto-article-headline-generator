@@ -2,11 +2,41 @@
 <html>
 	<body>
 		<h1 id="headline"></h1>
+		<p id="content">The following is a link that matches this randomly generated title (if any):</p>
+		<br/>
+		<a id="link" href=""></a>
 		<script>
-			window.onload = setHeadline()
+			window.onload = initPage();
+			
+			function initPage() {
+				
+				var headline = setHeadline();
+
+				var HttpClient = function() {
+					this.get = function(aUrl, aCallback) {
+						var anHttpRequest = new XMLHttpRequest();
+						anHttpRequest.onreadystatechange = function() { 
+							if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+								aCallback(anHttpRequest.responseText);
+						}
+
+						anHttpRequest.open( "GET", aUrl, true );
+						anHttpRequest.send();
+					}
+				}
+
+				var client = new HttpClient();
+				// headline = "lightning"; <---test
+				var url = "https://www.reddit.com/r/bitcoin/search.json?q=title:" + headline + "&sort=new";
+				client.get(url, function(response) {
+					parseJsonForLink(response);
+				});
+			}
 
 			function setHeadline() {
-				document.getElementById("headline").innerHTML = generateHeadline()
+				var headline = generateHeadline();
+				document.getElementById("headline").innerHTML = headline;
+				return headline;
 			}
 			
 			function generateHeadline() {
@@ -103,6 +133,21 @@
 			function randWord(array) {
 				return array[Math.floor(Math.random() * array.length)] + " "
 			}
+
+			function parseJsonForLink(json) {
+				var link = "#";
+				var text = "N/A";
+				if(json != null) {
+					var jsonObj = JSON.parse(json);
+					if(jsonObj.data.children != []) {
+						var data = jsonObj.data.children[0].data.url;
+						link = text = data;
+					}
+				}
+				document.getElementById("link").href = link;
+				document.getElementById("link").text = text;
+			}
+
 		</script>
 	</body>
 </html>
