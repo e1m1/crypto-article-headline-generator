@@ -21,7 +21,7 @@
 					"Financial authority of",
 					"H.E. the King of",
 					"Investment bank from"
-				]
+				];
 
 				let locations = [
 					"Hong Kong",
@@ -34,9 +34,9 @@
 					"Uruguay",
 					"Tajikistan",
 					"Palau"
-				]
+				];
 
-				let actions = [
+				let actns = [
 					"approves",
 					"regulates",
 					"introduces",
@@ -47,52 +47,57 @@
 					"founded",
 					"joining",
 					"backing"
-				]
+				];
 
+				let primaryAdjectives = [
+					"latest",
+					"world's first",
+					"state-of-the-art",
+					"multipurpose",
+					"proprietary",
+					"industrialized",
+					"real-time",
+					"revolutionary",
+					"multiplatform",
+					"real-estate"
+				];
 
+				let secondaryAdjectives = [
+					"gaming-backed",
+					"decentralized",
+					"transparent",
+					"ERC-721",
+					"SaaS",
+					"IoT-focused",
+					"AI-based",
+					"ERC-20",
+					"flat-backed",
+					"quantum resistant"
+				];
 
-				var headline = randWord(entities) + randWord
-				return randWord(entities) +
-						randWord(locations) +
-						randWord([
-							
-						]) +
-						randWord([
-							"latest",
-							"world's first",
-							"state-of-the-art",
-							"multipurpose",
-							"proprietary",
-							"industrialized",
-							"real-time",
-							"revolutionary",
-							"multiplatform",
-							"real-estate"
-						]) +
-						randWord([
-							"gaming-backed",
-							"decentralized",
-							"transparent",
-							"ERC-721",
-							"SaaS",
-							"IoT-focused",
-							"AI-based",
-							"ERC-20",
-							"flat-backed",
-							"quantum reistant"
-						]) +
-						randWord([
-							"token exchange",
-							"dApp platform",
-							"hyperledger",
-							"sidechain",
-							"ETH hard fork",
-							"cryptoasset",
-							"pre-ICO bonus",
-							"23% airdrop",
-							"prediction market",
-							"asset-backed loans"
-						]);
+				let applications = [
+					"token exchange",
+					"dApp platform",
+					"hyperledger",
+					"sidechain",
+					"ETH hard fork",
+					"cryptoasset",
+					"pre-ICO bonus",
+					"23% airdrop",
+					"prediction market",
+					"asset-backed loans"
+				];
+				
+				var entity = randWord(entities);
+				var location = randWord(locations);
+				var actn = randWord(actns);
+				var primaryAdjective = randWord(primaryAdjectives);
+				var secondaryAdjective = randWord(secondaryAdjectives);
+				var application = randWord(applications);
+				
+				var headline = entity + location + actn + primaryAdjective + secondaryAdjective + application;
+				
+				return headline;
 			}
 			
 			function randWord(array) {
